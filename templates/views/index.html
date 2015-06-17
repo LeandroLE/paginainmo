@@ -38,35 +38,33 @@
 	
 	<!-- Two -->
 	<section id="two">
-		<h2>Recent Work</h2>
+		<h2>Nuestras viviendas</h2>
 		<div class="row">
 			{% if galleries.length %}
 			{% for gallery in galleries %}
 			{% if gallery.heroImage.exists %}
 			<article class="6u 12u$(xsmall) work-item">
-				<a href="images/thumbs/01.jpg" class="image fit thumb"><img src="{{ gallery._.heroImage.limit(680,680) }}" alt="" /><span class="price">{{ gallery.precio }}</span></a>
 				
-				<!-- {% for image in gallery.images %}
-				<div class="col-xs-4 col-sm-4 col-md-3 gallery-image">
-					<img src="{{ image.limit(300,300) }}" class="img-rounded">
-				</div>
-				{% endfor %}-->
-				
-				
-				
+				<a href="{{ gallery._.heroImage.limit(680,680) }}" class="image fit thumb" ><img  src="{{ gallery._.heroImage.limit(680,680) }}" /><span class="price" >{{ gallery.precio }} </span></a>
+
 				<h3>{{ gallery.name }}</h3>
-				<p>{{ gallery._.texto.format("") }}</p>
+				<p>{{ gallery.texto }}</p>
+				<a type="button-special-small" href="{{ gallery._.heroImage.limit(900,900) }}" data-lightbox="{{ gallery.name }}">Más fotos</a>
+				
+				{% for image in gallery.images %}
+				<a href="{{ image.limit(900,900) }}" data-lightbox="{{ gallery.name }}"></a>
+				{% endfor %}
+				
 			</article>
 			{% endif %}
 			{% endfor %}
 			{% else %}
-			<h3>There are no image galleries yet.</h3>
+			<h3>Aún no hay imágenes en la galería.</h3>
 			{% endif %}
 		</div>
-		<ul class="actions">
-			<li><a href="/gallery" class="button">Ver Todo</a></li>
+
 			
-		</ul>
+		
 	</section>
 
 	<!-- Three -->
