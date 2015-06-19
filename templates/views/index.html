@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 <html>
-<head>
+<head ng-app="InmobiliariaController">
 	<title>Inmobiliaria</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,7 +10,7 @@
 	<link href="css/lightbox.css" rel="stylesheet" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
 </head>
-<body id="top">
+<body id="top" ng-controller="mainController">
 
 <!-- Header -->
 <header id="header">
@@ -21,7 +21,7 @@
 </header>
 
 <!-- Main -->
-<div id="main">
+<div id="main" >
 
 	<!-- One -->
 	<section id="one">
@@ -39,8 +39,44 @@
 	<!-- Two -->
 	<section id="two">
 		<h2>Nuestras viviendas</h2>
+		<div>
+		<label style="margin-left: 15px">Ordenar por:</label>
+			<select id="mySelect" onchange="myFunction()">
+				<option value="Precio">Precio
+				<option value="Fecha">Fecha
+			</select>
+			
+		</select>
+		</div>
+		<script>
+			function myFunction() {
+				var x = document.getElementById("mySelect").value;
+				
+				switch (x){
+					case 'Precio':
+						document.getElementById("prueba").innerHTML="";
+						
+						break;
+					case 'Fecha':
+						document.getElementById("prueba").innerHTML="<h3>fecha</h3>";
+						break;
+					default:
+				}
+			}
+		</script>
+		<div id="prueba"></div>
+		{% for gallery in galleries %}
+		{{gallery.name}}
+		{% endfor %}
+
+		{% for gallery in galleries2 %}
+		{{gallery.name}}
+		{% endfor %}
+		
 		<div class="row">
 			{% if galleries.length %}
+			
+			
 			{% for gallery in galleries %}
 			{% if gallery.heroImage.exists %}
 			<article class="6u 12u$(xsmall) work-item">
@@ -54,7 +90,6 @@
 				{% for image in gallery.images %}
 				<a href="{{ image.limit(900,900) }}" data-lightbox="{{ gallery.name }}"></a>
 				{% endfor %}
-				
 			</article>
 			{% endif %}
 			{% endfor %}
@@ -73,15 +108,15 @@
 		<p>Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.</p>
 		<div class="row">
 			<div class="8u 12u$(small)">
-				<form method="post" action="#">
+				<form method="post" action="mailto:lean.sgs@gmail.com">
 					<div class="row uniform 50%">
-						<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
-						<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
-						<div class="12u$"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
+						<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Nombre" /></div>
+						<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Tu Email" /></div>
+						<div class="12u$"><textarea name="message" id="message" placeholder="Mensaje" rows="4"></textarea></div>
 					</div>
 				</form>
 				<ul class="actions">
-					<li><input type="submit" value="Send Message" /></li>
+					<li><input type="submit" id="submit" value="Send Message" /></li>
 				</ul>
 			</div>
 			<div class="4u$ 12u$(small)">
@@ -442,8 +477,18 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 <!-- Scripts -->
 
+
+
+
+<!-- ---- -->
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.poptrox.min.js"></script>
+<script src="js/angular/angular.js"></script><!-- load angular 1.2.4 -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+
+<script src="/js/angularjs/controllers/frontend.js"></script> <!-- load up our controller -->
+<script src="/js/angularjs/services/ImagesList.js"></script> <!-- load our drone service -->
+<script src="/js/angularjs/core.js"></script> <!-- load our main application -->
 <script src="js/lightbox.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/util.js"></script>
