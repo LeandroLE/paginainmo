@@ -42,65 +42,187 @@
 		<div>
 		<label style="margin-left: 15px">Ordenar por:</label>
 			<select id="mySelect" onchange="myFunction()">
-				<option value="Precio">Precio
-				<option value="Fecha">Fecha
+				<option value="Precio">Precio menor a mayor
+				<option value="Fecha">Precio mayor a menor
+				<option value="Nombre">Nombre
 			</select>
-			
-		</select>
 		</div>
-		<script>
-			function myFunction() {
-				var x = document.getElementById("mySelect").value;
-				
-				switch (x){
-					case 'Precio':
-						document.getElementById("prueba").innerHTML="";
-						
-						break;
-					case 'Fecha':
-						document.getElementById("prueba").innerHTML="<h3>fecha</h3>";
-						break;
-					default:
-				}
-			}
-		</script>
-		<div id="prueba"></div>
-		{% for gallery in galleries %}
-		{{gallery.name}}
-		{% endfor %}
-
-		{% for gallery in galleries2 %}
-		{{gallery.name}}
-		{% endfor %}
 		
-		<div class="row">
+		
+		
+		<div id="datos">
 			{% if galleries.length %}
-			
-			
 			{% for gallery in galleries %}
 			{% if gallery.heroImage.exists %}
+			<div class="row" >
+				
 			<article class="6u 12u$(xsmall) work-item">
-				
-				<a href="{{ gallery._.heroImage.limit(680,680) }}" class="image fit thumb" ><img  src="{{ gallery._.heroImage.limit(680,680) }}" /><span class="price" >{{ gallery.precio }} </span></a>
+			
+				<div>
+					<a href="{{ gallery._.heroImage.limit(680,680) }}" class="image fit thumb" >
+						<img  src="{{ gallery._.heroImage.limit(680,680) }}" />
+						<span class="price" ><h4>{{ gallery.precio}}€</h4> </span></a>
 
-				<h3>{{ gallery.name }}</h3>
-				<p>{{ gallery.texto }}</p>
-				<a type="button-special-small" href="{{ gallery._.heroImage.limit(900,900) }}" data-lightbox="{{ gallery.name }}">Más fotos</a>
+				</div>
 				
-				{% for image in gallery.images %}
-				<a href="{{ image.limit(900,900) }}" data-lightbox="{{ gallery.name }}"></a>
-				{% endfor %}
 			</article>
+				
+				<div class="divrow">
+			<h3>{{ gallery.name }}</h3>
+			<h4>Descripción:</h4>		
+			<p>{{ gallery.descripcion }}</p>
+			<h4>Características:</h4>
+			<p>{{gallery.caracteristicas}}</p>		
+				
+			<a href="{{ gallery._.heroImage.limit(900,900) }}"
+
+			data-lightbox="{{gallery.name }}">Más fotos</a>
+					{% for image in gallery.images %}
+					<a href="{{ image.limit(900,900) }}" data-lightbox="{{ gallery.name }}"></a>
+					{% endfor %}
+				</div>
+			
+			</div>
+			<br>
+			
 			{% endif %}
 			{% endfor %}
 			{% else %}
 			<h3>Aún no hay imágenes en la galería.</h3>
 			{% endif %}
-		</div>
 
-			
+		</div>
+		
+		<script>
+			function myFunction() {
+				var x = document.getElementById("mySelect").value;
+				console.log(x);
+				switch (x){
+					case 'Precio':
+					document.getElementById("datos").innerHTML='{% if galleries1.length %}'+
+					'{% for gallery in galleries1 %}'+
+						'{% if gallery.heroImage.exists %}'+
+						'<div class="row" >'+
+
+						'<article class="6u 12u$(xsmall) work-item">'+
+
+						'<div>'+
+						'<a href="{{ gallery._.heroImage.limit(680,680) }}" class="image fit thumb" ><img  src="{{ gallery._.heroImage.limit(680,680) }}" /><span class="price" ><h4>{{ gallery.precio}}€</h4> </span></a>'+
+
+					'</div>'+
+
+					'</article>'+
+
+					'<div class="divrow">'+
+					'<h3>{{ gallery.name }}</h3>'+
+					'<h4>Descripción:</h4>'+
+					'<p>{{ gallery.descripcion }}</p>'+
+				'<h4>Características:</h4>'+
+				'<p>{{gallery.caracteristicas}}</p>'+
+
+			'<a href="{{ gallery._.heroImage.limit(900,900) }}"data-lightbox="{{gallery.name }}">Más fotos</a>'+
+			'{% for image in gallery.images %}'+
+			'<a href="{{ image.limit(900,900) }}" data-lightbox="{{ gallery.name }}"></a>'+
+			'{% endfor %}'+
+			'</div>'+
+
+			'</div>'+
+			'<br>'+
+
+			'{% endif %}'+
+			'{% endfor %}'+
+			'{% else %}'+
+			'<h3>Aún no hay imágenes en la galería.</h3>'+
+			'{% endif %}'
+						
+						break;
+					case 'Fecha':
+						document.getElementById("datos").innerHTML='{% if galleries.length %}'+
+						'{% for gallery in galleries %}'+
+						'{% if gallery.heroImage.exists %}'+
+						'<div class="row" >'+
+
+						'<article class="6u 12u$(xsmall) work-item">'+
+
+						'<div>'+
+						'<a href="{{ gallery._.heroImage.limit(680,680) }}" class="image fit thumb" >'+
+						'<img  src="{{ gallery._.heroImage.limit(680,680) }}" />'+
+						'<span class="price" ><h4>{{ gallery.precio}}€</h4></span></a>'+
+
+						'</div>'+
+
+						'</article>'+
+
+						'<div class="divrow">'+
+						'<h3>{{ gallery.name }}</h3>'+
+						'<h4>Descripción:</h4>'+
+						'<p>{{ gallery.descripcion }}</p>'+
+						'<h4>Características:</h4>'+
+						'<p>{{gallery.caracteristicas}}</p>'+
+
+						'<a href="{{ gallery._.heroImage.limit(900,900) }}"data-lightbox="{{gallery.name }}">Más fotos</a>'+
+						'{% for image in gallery.images %}'+
+						'<a href="{{ image.limit(900,900) }}" data-lightbox="{{ gallery.name }}"></a>'+
+						'{% endfor %}'+
+						'</div>'+
+
+						'</div>'+
+						'<br>'+
+
+						'{% endif %}'+
+						'{% endfor %}'+
+						'{% else %}'+
+						'<h3>Aún no hay imágenes en la galería.</h3>'+
+						'{% endif %}'
+						break;
+					case 'Nombre':
+						document.getElementById("datos").innerHTML='{% if galleries2.length %}'+
+						'{% for gallery in galleries2 %}'+
+						'{% if gallery.heroImage.exists %}'+
+						'<div class="row" >'+
+
+						'<article class="6u 12u$(xsmall) work-item">'+
+
+						'<div>'+
+						'<a href="{{ gallery._.heroImage.limit(680,680) }}" class="image fit thumb" ><img  src="{{ gallery._.heroImage.limit(680,680) }}" /><span class="price" ><h4>{{ gallery.precio}}€</h4> </span></a>'+
+
+						'</div>'+
+
+						'</article>'+
+
+						'<div class="divrow">'+
+						'<h3>{{ gallery.name }}</h3>'+
+						'<h4>Descripción:</h4>'+
+						'<p>{{ gallery.descripcion }}</p>'+
+						'<h4>Características:</h4>'+
+						'<p>{{gallery.caracteristicas}}</p>'+
+
+						'<a href="{{ gallery._.heroImage.limit(900,900) }}"data-lightbox="{{gallery.name }}">Más fotos</a>'+
+						'{% for image in gallery.images %}'+
+						'<a href="{{ image.limit(900,900) }}" data-lightbox="{{ gallery.name }}"></a>'+
+						'{% endfor %}'+
+						'</div>'+
+
+						'</div>'+
+						'<br>'+
+
+						'{% endif %}'+
+						'{% endfor %}'+
+						'{% else %}'+
+						'<h3>Aún no hay imágenes en la galería.</h3>'+
+						'{% endif %}'
+
+						break;		
+											
+				}
+			}
+		</script>
 		
 	</section>
+		
+			
+		
+	
 
 	<!-- Three -->
 	<section id="three">
@@ -483,12 +605,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 <!-- ---- -->
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.poptrox.min.js"></script>
-<script src="js/angular/angular.js"></script><!-- load angular 1.2.4 -->
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+<!--<script src="js/angular/angular.js"></script>&lt;!&ndash; load angular 1.2.4 &ndash;&gt;-->
+<!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>-->
 
-<script src="/js/angularjs/controllers/frontend.js"></script> <!-- load up our controller -->
-<script src="/js/angularjs/services/ImagesList.js"></script> <!-- load our drone service -->
-<script src="/js/angularjs/core.js"></script> <!-- load our main application -->
+<!--<script src="/js/angularjs/controllers/frontend.js"></script> &lt;!&ndash; load up our controller &ndash;&gt;-->
+<!--<script src="/js/angularjs/services/ImagesList.js"></script> &lt;!&ndash; load our drone service &ndash;&gt;-->
+<!--<script src="/js/angularjs/core.js"></script> &lt;!&ndash; load our main application &ndash;&gt;-->
 <script src="js/lightbox.min.js"></script>
 <script src="js/skel.min.js"></script>
 <script src="js/util.js"></script>

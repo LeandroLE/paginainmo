@@ -214,7 +214,10 @@
 		}
 
 	}
-
+/*div del row */
+	.divrow {
+		max-width: 50%;
+	}
 /* Grid */
 
 	.row {
@@ -476,7 +479,7 @@
 	@media screen and (max-width: 1800px) {
 
 		.row > * {
-			padding: 0 0 0 2.5em;
+			padding: 0 0 0 1em;
 		}
 
 		.row {
@@ -1616,7 +1619,7 @@
 	}
 
 	p {
-		margin: 0 0 2em 0;
+		margin: 0 0 1em 0;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -1624,6 +1627,7 @@
 		font-weight: 400;
 		line-height: 1em;
 		margin: 0 0 1em 0;
+		margin-top: 1em;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1648,7 +1652,7 @@
 
 	h4 {
 		font-size: 1.1em;
-		line-height: 1.5em;
+		line-height: 0;
 	}
 
 	h5 {
@@ -2459,7 +2463,7 @@
 /* Work Item */
 
 	.work-item {
-		margin: 0 0 2em 0;
+		margin: 0 0 0 0;
 	}
 
 		.work-item .image {

@@ -15,8 +15,10 @@ Gallery.add({
 	publishedDate: { type: Date, default: Date.now },
 	heroImage: { type: Types.CloudinaryImage },
 	images: { type: Types.CloudinaryImages },
-	precio: { type: Types.Text},
-	texto: {	type: Types.Textarea }
+	precio: { type: Types.Number}, 
+	descripcion: {	type: Types.Textarea },
+	caracteristicas: { type: Types.Textarea }
+	
 });
 
 Gallery.register();
