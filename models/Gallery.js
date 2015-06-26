@@ -17,7 +17,8 @@ Gallery.add({
 	images: { type: Types.CloudinaryImages },
 	precio: { type: Types.Number}, 
 	descripcion: {	type: Types.Textarea },
-	caracteristicas: { type: Types.Textarea }
+	caracteristicas: { type: Types.Textarea },
+	localizacion: { type: Types.Location, defaults: { country: 'España' }}
 	
 });
 
