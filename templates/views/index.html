@@ -503,9 +503,9 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		switch (x){
 			case 'Precio':
 				document.getElementById("datos").innerHTML='{% if galleries1.length %}'+
-				'{% for gallery in galleries1 %}'+
-				'{% if gallery.heroImage.exists %}'+
-				'<div id="{{ gallery.name }}" class="modalmask">'+
+			'{% for gallery in galleries1 %}'+
+			'{% if gallery.heroImage.exists %}'+
+			'<div id="{{ gallery.name }}" class="modalmask">'+
 			'<div class="modalbox resize">'+
 
 			'<a href="#close" title="Close" class="close">X</a>'+
@@ -515,40 +515,40 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			'</div>'+
 			'</div>'+
 			'</div>'+
-				'<div class="row" >'+
+			'<div class="row" >'+
 
-				'<article class="6u 12u$(xsmall) work-item">'+
+			'<article class="6u 12u$(xsmall) work-item">'+
 
-				'<div>'+
-				'<a class="image fit thumb" ><img  src="{{ gallery._.heroImage.limit(680,680) }}" /><span class="price" ><h4>{{ gallery.precio}}€</h4> </span></a>'+
+			'<div>'+
+			'<a class="image fit thumb" ><img  src="{{ gallery._.heroImage.limit(680,680) }}" /><span class="price" ><h4>{{ gallery.precio}}€</h4> </span></a>'+
 
-				'</div>'+
+			'</div>'+
 
-				'</article>'+
+			'</article>'+
 
-				'<div class="divrow">'+
-				'<h3>{{ gallery.name }}</h3>'+
-				'<h4>Descripción:</h4>'+
-				'<p>{{ gallery.descripcion }}</p>'+
-				'<h4>Características:</h4>'+
-				'<p>{{gallery.caracteristicas}}</p>'+
+			'<div class="divrow">'+
+			'<h3>{{ gallery.name }}</h3>'+
+			'<h4>Descripción:</h4>'+
+			'<p>{{ gallery.descripcion }}</p>'+
+			'<h4>Características:</h4>'+
+			'<p>{{gallery.caracteristicas}}</p>'+
 
-				'<a href="{{ gallery._.heroImage.limit(900,900) }}"data-lightbox="{{gallery.name }}">Más fotos</a>'+
-				'{% for image in gallery.images %}'+
-				'<a href="{{ image.limit(900,900) }}" data-lightbox="{{ gallery.name }}"></a>'+
-				'{% endfor %}'+
-				'&nbsp; &nbsp; &nbsp; &nbsp;'+
+			'<a href="{{ gallery._.heroImage.limit(900,900) }}"data-lightbox="{{gallery.name }}">Más fotos</a>'+
+			'{% for image in gallery.images %}'+
+			'<a href="{{ image.limit(900,900) }}" data-lightbox="{{ gallery.name }}"></a>'+
+			'{% endfor %}'+
+			'&nbsp; &nbsp; &nbsp; &nbsp;'+
 			'<a href="#{{ gallery.name }}">Localización</a>'+
 			'</div>'+
 
-				'</div>'+
-				'<br>'+
+			'</div>'+
+			'<br>'+
 
-				'{% endif %}'+
-				'{% endfor %}'+
-				'{% else %}'+
-				'<h3>Aún no hay imágenes en la galería.</h3>'+
-				'{% endif %}'
+			'{% endif %}'+
+			'{% endfor %}'+
+			'{% else %}'+
+			'<h3>Aún no hay imágenes en la galería.</h3>'+
+			'{% endif %}'
 
 				break;
 			case 'Fecha':
@@ -566,14 +566,11 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				'</div>'+
 				'</div>'+
 				'<div class="row" >'+
-				'<div class="row" >'+
 
 				'<article class="6u 12u$(xsmall) work-item">'+
 
 				'<div>'+
-				'<a class="image fit thumb" >'+
-				'<img  src="{{ gallery._.heroImage.limit(680,680) }}" />'+
-				'<span class="price" ><h4>{{ gallery.precio}}€</h4></span></a>'+
+				'<a class="image fit thumb" ><img  src="{{ gallery._.heroImage.limit(680,680) }}" /><span class="price" ><h4>{{ gallery.precio}}€</h4> </span></a>'+
 
 				'</div>'+
 
@@ -618,19 +615,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				'</div>'+
 				'</div>'+
 				'<div class="row" >'+
-				'<div class="row" >'+
-
-				'<article class="6u 12u$(xsmall) work-item">'+
-
-				'<div>'+
-				'<a class="image fit thumb" >'+
-				'<img  src="{{ gallery._.heroImage.limit(680,680) }}" />'+
-				'<span class="price" ><h4>{{ gallery.precio}}€</h4></span></a>'+
-
-				'</div>'+
-
-				'</article>'+
-				'<div class="row" >'+
 
 				'<article class="6u 12u$(xsmall) work-item">'+
 
@@ -664,7 +648,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				'{% else %}'+
 				'<h3>Aún no hay imágenes en la galería.</h3>'+
 				'{% endif %}'
-
 				break;
 
 		}
