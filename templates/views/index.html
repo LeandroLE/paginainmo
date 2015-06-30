@@ -17,8 +17,7 @@
 <header id="header">
 	<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
 	<h1><strong>Inmobiliaria fincas</strong>, venta de fincas<br />
-		chulas y tal y cual<br />
-		Pascual</h1>
+		chulas y tal y cual<br /></h1>
 </header>
 
 <!-- Main -->
@@ -27,15 +26,14 @@
 	<!-- One -->
 	<section id="one">
 		<header class="major">
-			<h2>Ipsum lorem dolor aliquam ante commodo<br />
-				magna sed accumsan arcu neque.</h2>
+			<h2>Titulo inmobiliaria<br />
+				venta de fincas, cortijos y viviendas familiares</h2>
 		</header>
 		<p>Accumsan orci faucibus id eu lorem semper. Eu ac iaculis ac nunc nisi lorem vulputate lorem neque cubilia ac in adipiscing in curae lobortis tortor primis integer massa adipiscing id nisi accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque cubilia.</p>
 		<ul class="actions">
-			<li><a href="#" class="button">Learn More</a></li>
+			<li><a href="#three" class="button">Contacta</a></li>
 		</ul>
 	</section>
-
 
 	<!-- Two -->
 	<section id="two">
@@ -49,6 +47,7 @@
 			</select>
 		</div>
 		
+		<br>
 		
 		
 		<div id="datos">
@@ -120,40 +119,52 @@
 	
 	<!-- Three -->
 	<section id="three">
-		<h2>Get In Touch</h2>
-		<p>Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.</p>
-		<div class="row">
-			<div class="8u 12u$(small)">
-				<form method="post" action="mailto:lean.sgs@gmail.com">
-					<div class="row uniform 50%">
-						<div class="6u 12u$(xsmall)"><input type="text" name="name" id="name" placeholder="Nombre" /></div>
-						<div class="6u$ 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Tu Email" /></div>
-						<div class="12u$"><textarea name="message" id="message" placeholder="Mensaje" rows="4"></textarea></div>
+		
+		<h2>Contáctanos</h2>
+		<p>Mándanos un email y estaremos encantados de proporcionarte información o resolver tus dudas.</p>
+		
+			<form class="form-horizontal" id="contact_form">
+				<fieldset>
+
+					<!-- Text input-->
+					<div id="contacto" class="contactanos">
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="name">Nombre</label>
+						<div class="col-md-5">
+							<input id="name" name="name" type="text" placeholder="Introduce tu nombre aquí" class="form-control input-md" required="">
+
+						</div>
 					</div>
-				</form>
-				<ul class="actions">
-					<li><input type="submit" id="submit" value="Send Message" /></li>
-				</ul>
-			</div>
-			<div class="4u$ 12u$(small)">
-				<ul class="labeled-icons">
-					<li>
-						<h3 class="icon fa-home"><span class="label">Address</span></h3>
-						1234 Somewhere Rd.<br />
-						Nashville, TN 00000<br />
-						United States
-					</li>
-					<li>
-						<h3 class="icon fa-mobile"><span class="label">Phone</span></h3>
-						000-000-0000
-					</li>
-					<li>
-						<h3 class="icon fa-envelope-o"><span class="label">Email</span></h3>
-						<a href="#">hello@untitled.tld</a>
-					</li>
-				</ul>
-			</div>
-		</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="email">Email</label>
+						<div class="col-md-5">
+							<input id="email" name="email" type="text" placeholder="Introduce tu email aquí" class="form-control input-md" required="">
+
+						</div>
+					</div>
+
+					<!-- Textarea -->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="msg">Mensaje</label>
+						<div class="col-md-4">
+							<textarea class="form-control" id="msg" name="msg" cols="6" rows="6" placeholder="Introduce tu mensaje aquí"></textarea>
+						</div>
+					</div>
+
+					</div>
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="submit"></label>
+						<div class="col-md-4">
+							<button id="submit" name="submit" class="button">Enviar mensaje</button>
+						</div>
+					</div>
+
+				</fieldset>
+			</form>
+		
 	</section>
 
 	<!-- Four -->
@@ -652,6 +663,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 		}
 	}
+
+	
 </script>
 
 
@@ -675,7 +688,49 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 <!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
 <script src="js/main.js"></script>
 <script>
-	
+	jQuery(function($)
+	{
+		$("#contact_form").submit(function()
+		{
+			var email = $("#email").val(); // get email field value
+			var name = $("#name").val(); // get name field value
+			var msg = $("#msg").val(); // get message field value
+			console.log('entro');
+			$.ajax(
+					{
+						type: "POST",
+						url: "https://mandrillapp.com/api/1.0/messages/send.json",
+						data: {
+							'key': 'z4M1MuxPdFCLVA-bA3ngfw',
+							'message': {
+								'from_email': email,
+								'from_name': name,
+								'headers': {
+									'Reply-To': email
+								},
+								'subject': 'Website Contact Form Submission',
+								'text': msg,
+								'to': [
+									{
+										'email': 'lean.sgs@gmail.com',
+										'name': 'Nombree',
+										'type': 'to'
+									}]
+							}
+						}
+					})
+					.done(function(response) {
+						alert('Your message has been sent. Thank you!'); // show success message
+						$("#name").val(''); // reset field after successful submission
+						$("#email").val(''); // reset field after successful submission
+						$("#msg").val(''); // reset field after successful submission
+					})
+					.fail(function(response) {
+						alert('Error sending message.');
+					});
+			return false; // prevent page refresh
+		});
+	});
 
 </script>
 </body>

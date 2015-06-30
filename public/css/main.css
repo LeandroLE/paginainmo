@@ -1839,9 +1839,9 @@
 	label {
 		color: #787878;
 		display: block;
-		font-size: 0.9em;
+		font-size: 1.2em;
 		font-weight: 400;
-		margin: 0 0 1em 0;
+		margin: 0 0 0 0;
 	}
 
 	input[type="text"],
@@ -2924,6 +2924,7 @@
 
 			body, input, select, textarea {
 				font-size: 12pt;
+				max-height: 9em;
 			}
 
 	}
@@ -3191,3 +3192,7 @@
 			}
 
 	}
+
+.contactanos {
+	margin:1.5em;
+}

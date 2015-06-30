@@ -46,8 +46,8 @@ keystone.set('locals', {
 	editable: keystone.content.editable
 });
 
-//keystone.set('google api key', 'AIzaSyCR0YE5dSKihlPRjDvEmYJYow79n2jxmL8');
-//keystone.set('google server api key', 'AIzaSyB2FC7XyNvlS66kWwlrrkKWiVg1x8SEK9c');
+//keystone.set('mandrill api key', 'z4M1MuxPdFCLVA-bA3ngfw');
+
 keystone.set('cloudinary config', 'cloudinary://374534765442513:xeIY26FXmq_55uj4xzwOabEVNsg@dq8bgsqwg');
 
 // Load your project's Routes
