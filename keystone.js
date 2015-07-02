@@ -68,3 +68,5 @@ keystone.set('nav', {
 // Start Keystone to connect to your database and initialise the web server
 
 keystone.start();
+
+console.log('Express en modo %s: ', keystone.get('env'));
